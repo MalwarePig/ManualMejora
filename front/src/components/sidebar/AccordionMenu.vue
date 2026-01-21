@@ -27,7 +27,7 @@ function isShowF(index) {
 }
 
 function loadPage(params) {
-     emit('showPage', { nombre: 'Juan', edad: 30 })
+     emit('showPage', params)
      console.log(params)
 }
 

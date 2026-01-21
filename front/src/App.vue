@@ -1,22 +1,28 @@
 <script setup>
+import { ref } from 'vue';
 import AccordionMenu from './components/sidebar/AccordionMenu.vue';
 import Facturacion from './components/Manuales/Administracion/Facturacion.vue'
 
-
+var pageActive = ref('DEMO')
 function AquiEscuchaPadre(data) {
   console.log("Aqui recibir Titulo " + Object.values(data))
+
+  pageActive.value = data
 }
+
+
 </script>
 
 <template>
   <div class="app-container">
     <div class="sidebar">
       <h2>Menu</h2>
-      <AccordionMenu :menuItems="menuData" @showPage="AquiEscuchaPadre"/>
+      <AccordionMenu :menuItems="menuData" @showPage="AquiEscuchaPadre" />
     </div>
     <div class="main-content">
       <h1>MejoraSoft</h1>
       <p>Sección de información.</p>
+      <p>{{ pageActive }}</p>
     </div>
   </div>
 </template>
