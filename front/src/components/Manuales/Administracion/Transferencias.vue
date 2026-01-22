@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <h1>Modulo de Facturacion</h1>
+    <h1>Modulo de Transferencias</h1>
 </template>
 
 <style scoped>

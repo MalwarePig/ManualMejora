@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(26, 26, 26, 0.87);
-  background-color: #242424;
+  background-color: #ebebeb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -46,9 +47,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -57,6 +60,65 @@ button:focus-visible {
 .card {
   padding: 2em;
 }
+
+
+/* Estilos para los manuales */
+/* Contenedor principal */
+.manual {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+/* Títulos */
+.manual-title {
+  color: #0b0b0b;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.manual-subtitle {
+  color: #0b0b0b;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Secciones */
+.manual-section {
+  margin-bottom: 32px;
+}
+
+/* Texto */
+.manual-text {
+  color: #0b0b0b;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+/* Imágenes */
+.manual-image {
+  margin: 32px 0;
+  text-align: center;
+}
+
+.manual-image img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.manual-caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Fin para estilos manuales */
 
 #app {
   width: 100vw;
@@ -71,9 +133,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

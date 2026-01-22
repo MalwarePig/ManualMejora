@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-const emit = defineEmits(['ShowInfo'])
+const emit = defineEmits(['showPage'])
 
 var data = ref([
     {
@@ -17,48 +17,76 @@ var data = ref([
         Titulo: 'Compras',
         paginas: ['OC', 'Proveedores'],
         visible: false
+    },
+    {
+        Titulo: 'Recursos Humanos',
+        paginas: ['RH'],
+        visible: false
+    },
+    {
+        Titulo: 'Comercial',
+        paginas: ['Clientes'],
+        visible: false
     }
 ])
 
 
 function isShowF(index) {
     data.value[index].visible = !data.value[index].visible
-   
 }
 
 function loadPage(params) {
-     emit('showPage', params)
-     console.log(params)
+    emit('showPage', params)
+    console.log(params)
 }
 
 </script>
 <template>
     <div class="div-side-bar">
-        <div class="header-bar" v-for="(value, index) in data" :key="index">
+        <div class="header-bar" :class="{ 'menuActive': value.visible }" v-for="(value, index) in data" :key="index">
             <div @click="isShowF(index)">
                 <p>{{ value.Titulo }}</p>
             </div>
 
 
-            <div class="body-bar" v-for="subvalue in value.paginas" :key="subvalue" v-show="value.visible" @click="loadPage(subvalue)">
-                <p>{{ subvalue }}</p>
-            </div>
+            <transition name="slide-fade">
+                <div v-show="value.visible">
+                    <div class="body-bar" v-for="subvalue in value.paginas" :key="subvalue" @click="loadPage(subvalue)">
+                        <p>{{ subvalue }}</p>
+                    </div>
+                </div>
+            </transition>
         </div>
     </div>
 </template>
 
 <style scoped>
 .div-side-bar {
-    background-color: #242424;
+    background-color: #ebebeb;
+    /*    border: 1px #3f3c3f solid; */
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px #615e61;
 }
 
 .header-bar {
-    background-color: #180b17;
+    background-color: #ebebeb;
+    color: #3f3c3f;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     font-size: 1rem;
     padding: 1px;
-    border: 1px #3f3c3f solid;
+    /*  border: 1px #3f3c3f solid; */
+    box-shadow: 2px 2px 5px #615e61;
+    margin: 5px;
+    padding: 5px;
+}
+
+.header-bar:hover>div>p {
+    /*     background-color: #ddd3e2; */
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .header-bar p {
@@ -66,15 +94,37 @@ function loadPage(params) {
 }
 
 .body-bar {
-    background-color: #a37ca0;
+    background-color: #e7e3e7;
     margin: 0;
     padding: 0;
-    border: 1px #3f3c3f solid;
+    border: 1px #bebbbe solid;
+    border-radius: 8px;
 }
 
 .body-bar:hover {
-    background-color: #8a6487;
+    background-color: #a19fa1;
 }
 
-/* s */
+.menuActive {
+    border: 1px aqua solid;
+}
+
+.menuActive>div>p {
+    font-weight: bold;
+}
+
+/* Animación de despliegue (Accordion) */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all 0.4s ease;
+    max-height: 500px;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    max-height: 0;
+    opacity: 0;
+}
 </style>
