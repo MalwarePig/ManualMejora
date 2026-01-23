@@ -84,10 +84,10 @@ function loadPage(params) {
 }
 
 .header-bar:hover>div>p {
-    /*     background-color: #ddd3e2; */
     cursor: pointer;
     font-weight: bold;
 }
+
 
 .header-bar p {
     margin: 5px;
@@ -106,7 +106,7 @@ function loadPage(params) {
 }
 
 .menuActive {
-    border: 1px aqua solid;
+    border: 1px #2cbf1f solid;
 }
 
 .menuActive>div>p {

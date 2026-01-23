@@ -21,26 +21,40 @@ const routes = {
     'Clientes': Clientes
 }
 
+var helpActive = ref(false)
+
 //Funciones
 function AquiEscuchaPadre(data) {
     pageActive.value = routes[data]
 }
 
+function helpWindow() {
+    helpActive.value = !helpActive.value
+}
 
 </script>
 
 <template>
-    <Navbar />
+    <button @click="helpWindow()">Help</button>
+    <Navbar @showHelp="helpWindow" />
     <div class="app-container">
-
-        <div class="sidebar">
-            <h2>Menu</h2>
-            <AccordionMenu :menuItems="menuData" @showPage="AquiEscuchaPadre" />
+        <div class="Help" v-if="helpActive">
+            <h2>Help</h2>
         </div>
-        <div class="main-content">
 
-            <component :is="pageActive" v-if="pageActive" />
+        <div class="Manuals" v-else>
+            <div class="sidebar">
+                <h2>Menu</h2>
+                <AccordionMenu :menuItems="menuData" @showPage="AquiEscuchaPadre" />
+            </div>
+            <div class="main-content">
+
+                <component :is="pageActive" v-if="pageActive" />
+            </div>
         </div>
+
+
+
     </div>
 </template>
 
@@ -55,6 +69,13 @@ function AquiEscuchaPadre(data) {
     color: #f3f4f6;
     /* Light text */
     overflow: hidden;
+}
+
+.Manuals {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
 }
 
 .sidebar {

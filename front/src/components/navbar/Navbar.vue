@@ -1,14 +1,14 @@
 <script setup>
-
+const emit = defineEmits(['showHelp'])
 
 </script>
 <template>
     <div class="navbar">
         <div class="navbar-item">
-            <p>Manual</p>
+            <button @click="emit('showHelp')">Manual</button>
         </div>
         <div class="navbar-item">
-            <p>Ayuda</p>
+            <button @click="emit('showHelp')">Ayuda</button>
         </div>
     </div>
 </template>
