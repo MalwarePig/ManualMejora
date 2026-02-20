@@ -1,0 +1,542 @@
+[
+    {
+        "codigo": "CFDI40101",
+        "descripcion": "El campo Fecha no cumple con el patrón requerido.",
+        "detalle": "Debe cumplir con el patrón (20[1-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]) y corresponder con la hora local donde se expide el comprobante.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40102",
+        "descripcion": "El resultado de la digestión debe ser igual al resultado de la desencripción del sello.",
+        "detalle": "Desencriptar el sello con el certificado del atributo Certificado, generar la cadena original y aplicar SHA-256. El resultado debe coincidir con la desencripción del sello.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40103",
+        "descripcion": "Si el tipo de comprobante es T, N o P el campo FormaPago no debe existir.",
+        "detalle": "FormaPago es un atributo condicional para expresar la clave de forma de pago de los bienes o servicios.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40104",
+        "descripcion": "El campo FormaPago no contiene un valor del catálogo c_FormaPago.",
+        "detalle": "Debe contener un valor válido del catálogo c_FormaPago.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40105",
+        "descripcion": "El campo FormaPago no contiene el valor \"99\".",
+        "detalle": "Debe contener el valor 99 cuando MetodoPago sea PPD.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40106",
+        "descripcion": "El certificado no cumple con los valores permitidos.",
+        "detalle": "Debe contener un archivo .cer válido.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40107",
+        "descripcion": "El SubTotal excede los decimales permitidos por la moneda.",
+        "detalle": "Debe tener hasta la cantidad de decimales que soporte la moneda.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40108",
+        "descripcion": "El importe no coincide con la suma de los conceptos.",
+        "detalle": "Cuando TipoDeComprobante sea I, E o N, debe ser igual al redondeo de la suma de los importes de los conceptos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40109",
+        "descripcion": "Si el comprobante es T o P el importe no es 0.",
+        "detalle": "Cuando sea T o P el importe debe ser 0 o cero con decimales.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40110",
+        "descripcion": "El Descuento no es menor o igual que el Subtotal.",
+        "detalle": "Debe ser menor o igual que el atributo Subtotal.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40111",
+        "descripcion": "Existe descuento en conceptos y el comprobante no es I, E o N.",
+        "detalle": "Si TipoDeComprobante es I, E o N y hay descuentos en conceptos, debe existir el atributo Descuento y coincidir con la suma redondeada.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40112",
+        "descripcion": "El Descuento excede los decimales permitidos.",
+        "detalle": "Debe tener hasta la cantidad de decimales que soporte la moneda.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40113",
+        "descripcion": "El campo Moneda no contiene un valor del catálogo c_Moneda.",
+        "detalle": "Debe contener un valor válido del catálogo c_Moneda.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40114",
+        "descripcion": "TipoCambio distinto de 1 cuando la moneda es MXN.",
+        "detalle": "Si Moneda es MXN puede omitirse TipoCambio; si se incluye debe ser 1.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40115",
+        "descripcion": "Falta TipoCambio cuando Moneda es distinta de MXN y XXX.",
+        "detalle": "Es requerido cuando Moneda sea distinta de MXN y XXX.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40116",
+        "descripcion": "Se registró TipoCambio cuando Moneda es XXX.",
+        "detalle": "No debe registrarse cuando Moneda sea XXX.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40117",
+        "descripcion": "TipoCambio no cumple con el patrón requerido.",
+        "detalle": "Debe cumplir con el patrón [0-9]{1,18}(.[0-9]{1,6})?.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40118",
+        "descripcion": "TipoCambio fuera de límites sin Confirmacion.",
+        "detalle": "Si está fuera del porcentaje permitido del catálogo c_Moneda, debe obtener clave de confirmación del PAC.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40119",
+        "descripcion": "El Total no corresponde con la suma calculada.",
+        "detalle": "Debe ser igual al subtotal menos descuentos más contribuciones menos impuestos retenidos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40120",
+        "descripcion": "Total fuera de límites sin Confirmacion.",
+        "detalle": "Si supera el límite del SAT, debe obtener clave de confirmación del PAC.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40121",
+        "descripcion": "El campo TipoDeComprobante no contiene un valor del catálogo c_TipoDeComprobante.",
+        "detalle": "Debe contener un valor válido del catálogo c_TipoDeComprobante.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40122",
+        "descripcion": "El campo Exportacion contiene el valor \"02\" y no incluye el complemento de Comercio Exterior.",
+        "detalle": "Cuando Exportacion sea 02 debe incluir el complemento de Comercio Exterior.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40123",
+        "descripcion": "El campo Exportacion no contiene un valor del catálogo c_Exportacion.",
+        "detalle": "Debe contener un valor válido del catálogo c_Exportacion.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40124",
+        "descripcion": "El campo MetodoPago no contiene un valor del catálogo c_MetodoPago.",
+        "detalle": "Debe contener un valor válido del catálogo c_MetodoPago.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40125",
+        "descripcion": "Se registró MetodoPago cuando TipoDeComprobante es T o P.",
+        "detalle": "Debe omitirse MetodoPago cuando TipoDeComprobante sea T o P.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40126",
+        "descripcion": "El campo LugarExpedicion no contiene un valor del catálogo c_CodigoPostal.",
+        "detalle": "Debe contener un valor válido del catálogo c_CodigoPostal.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40127",
+        "descripcion": "El campo Confirmacion existe cuando no debería.",
+        "detalle": "No debe existir cuando TipoCambio y/o Total estén dentro del rango permitido.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40128",
+        "descripcion": "Número de confirmación inválido.",
+        "detalle": "El PAC debe verificar que la clave de confirmación haya sido solicitada correctamente.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40129",
+        "descripcion": "Número de confirmación utilizado previamente.",
+        "detalle": "El PAC debe verificar que la clave de confirmación no se use en más de un comprobante.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40130",
+        "descripcion": "Falta el nodo Información Global cuando corresponde.",
+        "detalle": "Debe existir cuando TipoDeComprobante sea I y el RFC del receptor sea XAXX010101000 con nombre PUBLICO EN GENERAL.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40131",
+        "descripcion": "El campo Periodicidad no contiene un valor del catálogo c_Periodicidad.",
+        "detalle": "Debe contener un valor válido del catálogo c_Periodicidad.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40132",
+        "descripcion": "El RegimenFiscal no contiene el valor 621 cuando corresponde.",
+        "detalle": "Cuando Periodicidad sea 05 el RegimenFiscal debe ser 621.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40133",
+        "descripcion": "El campo Meses no contiene un valor del catálogo c_Meses.",
+        "detalle": "Debe contener un valor válido del catálogo c_Meses.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40134",
+        "descripcion": "El campo Meses no contiene un valor válido del 01 al 12.",
+        "detalle": "Si Periodicidad es distinta de 05 debe contener un valor del 01 al 12.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40135",
+        "descripcion": "El campo Meses no contiene un valor válido del 13 al 18.",
+        "detalle": "Si Periodicidad es 05 debe contener un valor del 13 al 18.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40136",
+        "descripcion": "El campo Año no es igual al año en curso o al inmediato anterior.",
+        "detalle": "Debe expresar el año correspondiente a la información del comprobante global.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40137",
+        "descripcion": "El campo TipoRelacion no contiene un valor del catálogo c_TipoRelacion.",
+        "detalle": "Debe contener un valor válido del catálogo c_TipoRelacion.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40138",
+        "descripcion": "El Nombre del emisor no se encuentra en la lista de RFC inscritos no cancelados.",
+        "detalle": "Debe encontrarse en la lista de RFC inscritos no cancelados en el SAT.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40139",
+        "descripcion": "El Nombre del emisor no corresponde al RFC registrado.",
+        "detalle": "Debe corresponder al nombre asociado al RFC del nodo Emisor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40140",
+        "descripcion": "El campo RegimenFiscal no contiene un valor del catálogo c_RegimenFiscal.",
+        "detalle": "Debe contener un valor válido del catálogo c_RegimenFiscal.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40141",
+        "descripcion": "La clave del campo RegimenFiscal no corresponde con el tipo de persona.",
+        "detalle": "El régimen fiscal debe corresponder con el tipo de persona (física o moral) del emisor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40142",
+        "descripcion": "El campo FacAtrAdquirente no contiene un número de operación válido.",
+        "detalle": "Debe contener el número de operación cuando la respuesta del Validador de RFC para emitir CFDI a través del adquirente sea positiva.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40143",
+        "descripcion": "El RFC del receptor no existe en la lista de RFC inscritos no cancelados del SAT.",
+        "detalle": "Cuando no sea un RFC genérico, debe encontrarse en la lista de RFC inscritos no cancelados.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40144",
+        "descripcion": "El Nombre del receptor no se encuentra en la lista de RFC inscritos no cancelados.",
+        "detalle": "Debe encontrarse en la lista de RFC inscritos no cancelados en el SAT.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40145",
+        "descripcion": "El Nombre del receptor no corresponde al RFC registrado.",
+        "detalle": "Debe pertenecer al nombre asociado al RFC del nodo Receptor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40146",
+        "descripcion": "El RFC del receptor debe contener el valor \"XAXX010101000\" cuando aplique.",
+        "detalle": "Si el nombre es PUBLICO EN GENERAL, el RFC debe ser XAXX010101000.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40147",
+        "descripcion": "El DomicilioFiscalReceptor no se encuentra en la lista de RFC inscritos no cancelados.",
+        "detalle": "Debe encontrarse en la lista de RFC inscritos no cancelados en el SAT.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40148",
+        "descripcion": "El DomicilioFiscalReceptor no corresponde al RFC registrado.",
+        "detalle": "Debe pertenecer al nombre asociado al RFC del nodo Receptor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40149",
+        "descripcion": "El DomicilioFiscalReceptor no es igual a LugarExpedicion cuando el RFC es genérico.",
+        "detalle": "Si el RFC es XAXX010101000 o XEXX010101000 debe ser igual a LugarExpedicion.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40150",
+        "descripcion": "El campo ResidenciaFiscal no contiene un valor del catálogo c_Pais.",
+        "detalle": "Debe contener un valor válido del catálogo c_Pais.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40151",
+        "descripcion": "Se registró ResidenciaFiscal cuando el RFC es nacional o genérico nacional.",
+        "detalle": "No debe existir cuando el RFC sea nacional o genérico nacional.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40152",
+        "descripcion": "El valor del campo ResidenciaFiscal no puede ser MEX.",
+        "detalle": "El valor del atributo no puede ser MEX.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40153",
+        "descripcion": "Falta ResidenciaFiscal cuando se registra NumRegIdTrib o complemento de comercio exterior.",
+        "detalle": "Debe existir cuando el RFC sea genérico extranjero y exista complemento de comercio exterior o NumRegIdTrib.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40154",
+        "descripcion": "Se registró NumRegIdTrib cuando el RFC es nacional o genérico nacional.",
+        "detalle": "No debe registrarse cuando el RFC sea nacional o genérico nacional.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40155",
+        "descripcion": "Para registrar NumRegIdTrib falta complemento de comercio exterior.",
+        "detalle": "Si el RFC es genérico extranjero y hay complemento de comercio exterior, debe existir NumRegIdTrib.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40156",
+        "descripcion": "El campo NumRegIdTrib no cumple con el patrón correspondiente.",
+        "detalle": "Debe cumplir con el patrón indicado en el catálogo c_Pais.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40157",
+        "descripcion": "El campo RegimenFiscalR no contiene un valor del catálogo c_RegimenFiscal.",
+        "detalle": "Debe contener un valor válido del catálogo c_RegimenFiscal.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40158",
+        "descripcion": "La clave del RegimenFiscalR no corresponde con el tipo de persona del receptor.",
+        "detalle": "Debe corresponder con el tipo de persona (física o moral) del receptor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40159",
+        "descripcion": "La clave del RegimenFiscalR no corresponde de acuerdo al RFC del receptor.",
+        "detalle": "Si el RFC es XAXX010101000 o XEXX010101000 debe registrarse la clave 616.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40160",
+        "descripcion": "El campo UsoCFDI no contiene un valor del catálogo c_UsoCFDI.",
+        "detalle": "Debe contener un valor válido del catálogo c_UsoCFDI.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40161",
+        "descripcion": "El UsoCFDI no corresponde con el tipo de persona del receptor.",
+        "detalle": "Debe corresponder con el tipo de persona (física o moral) conforme al catálogo c_UsoCFDI.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40162",
+        "descripcion": "El campo UsoCFDI no corresponde con el régimen fiscal del receptor.",
+        "detalle": "Debe corresponder con la combinación válida entre RegimenFiscalR y UsoCFDI.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40163",
+        "descripcion": "Existe el nodo Conceptos y no contiene al menos un concepto.",
+        "detalle": "Debe existir al menos un nodo Concepto dentro de Conceptos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40164",
+        "descripcion": "El campo ClaveProdServ no contiene un valor del catálogo c_ClaveProdServ.",
+        "detalle": "Debe contener una clave válida del catálogo c_ClaveProdServ.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40165",
+        "descripcion": "El campo NoIdentificacion excede la longitud permitida.",
+        "detalle": "Debe cumplir con la longitud máxima permitida según el estándar.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40166",
+        "descripcion": "El campo Cantidad no cumple con el patrón requerido.",
+        "detalle": "Debe ser un valor numérico mayor a 0 y hasta con la cantidad de decimales permitidos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40167",
+        "descripcion": "El campo ClaveUnidad no contiene un valor del catálogo c_ClaveUnidad.",
+        "detalle": "Debe contener una clave válida del catálogo c_ClaveUnidad.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40168",
+        "descripcion": "El campo Unidad excede la longitud permitida.",
+        "detalle": "Debe cumplir con la longitud máxima permitida según el estándar.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40169",
+        "descripcion": "El campo Descripcion excede la longitud permitida.",
+        "detalle": "Debe cumplir con la longitud máxima permitida según el estándar.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40170",
+        "descripcion": "El campo ValorUnitario no cumple con el patrón requerido.",
+        "detalle": "Debe ser un valor numérico mayor o igual a 0 y hasta con la cantidad de decimales permitidos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40171",
+        "descripcion": "El campo Importe no es igual al redondeo de Cantidad por ValorUnitario.",
+        "detalle": "Debe ser igual al resultado del redondeo de la multiplicación Cantidad * ValorUnitario.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40172",
+        "descripcion": "El campo Descuento excede el Importe del concepto.",
+        "detalle": "Debe ser menor o igual que el Importe del concepto.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40173",
+        "descripcion": "El campo ObjetoImp no contiene un valor del catálogo c_ObjetoImp.",
+        "detalle": "Debe contener una clave válida del catálogo c_ObjetoImp.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40174",
+        "descripcion": "Falta el nodo Impuestos cuando ObjetoImp indica que es objeto de impuesto.",
+        "detalle": "Debe existir el nodo Impuestos cuando ObjetoImp sea 02.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40175",
+        "descripcion": "Existe el nodo Impuestos cuando ObjetoImp indica que no es objeto de impuesto.",
+        "detalle": "No debe existir el nodo Impuestos cuando ObjetoImp sea 01.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40176",
+        "descripcion": "El campo Base no cumple con el patrón requerido.",
+        "detalle": "Debe ser un valor numérico mayor a 0 y hasta con la cantidad de decimales permitidos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40177",
+        "descripcion": "El campo Impuesto no contiene un valor del catálogo c_Impuesto.",
+        "detalle": "Debe contener una clave válida del catálogo c_Impuesto.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40178",
+        "descripcion": "El campo TipoFactor no contiene un valor del catálogo c_TipoFactor.",
+        "detalle": "Debe contener una clave válida del catálogo c_TipoFactor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40179",
+        "descripcion": "El campo TasaOCuota no cumple con el valor permitido.",
+        "detalle": "Debe corresponder con los valores permitidos según el catálogo c_TasaOCuota.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40180",
+        "descripcion": "El campo Importe del impuesto no es igual al redondeo de Base por TasaOCuota.",
+        "detalle": "Debe ser igual al resultado del redondeo de la multiplicación Base * TasaOCuota.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40181",
+        "descripcion": "El TotalImpuestosRetenidos no coincide con la suma de las retenciones.",
+        "detalle": "Debe ser igual al redondeo de la suma de los importes de los impuestos retenidos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40182",
+        "descripcion": "El TotalImpuestosTrasladados no coincide con la suma de los traslados.",
+        "detalle": "Debe ser igual al redondeo de la suma de los importes de los impuestos trasladados.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40183",
+        "descripcion": "Existe Confirmacion sin que Total o TipoCambio estén fuera de rango.",
+        "detalle": "Solo debe existir cuando Total o TipoCambio estén fuera de los límites establecidos.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40184",
+        "descripcion": "El comprobante contiene nodos o atributos no permitidos.",
+        "detalle": "Solo deben existir los nodos y atributos definidos en el estándar del Anexo 20.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40185",
+        "descripcion": "La versión del comprobante no es 4.0.",
+        "detalle": "El atributo Version debe contener el valor 4.0.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40186",
+        "descripcion": "El sello no corresponde al emisor.",
+        "detalle": "Debe generarse con la llave privada correspondiente al certificado del emisor.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40187",
+        "descripcion": "El certificado está vencido o no vigente.",
+        "detalle": "Debe ser un certificado vigente al momento de la emisión.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40188",
+        "descripcion": "El certificado se encuentra revocado.",
+        "detalle": "No debe encontrarse en la lista de certificados revocados del SAT.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40189",
+        "descripcion": "El comprobante ya fue previamente timbrado.",
+        "detalle": "No debe existir un CFDI previo con el mismo sello o UUID.",
+        "visible": false
+    },
+    {
+        "codigo": "CFDI40190",
+        "descripcion": "Error no clasificado en validaciones del CFDI.",
+        "detalle": "Corresponde a validaciones generales del estándar Anexo 20 no cubiertas en reglas específicas.",
+        "visible": false
+    }
+]
